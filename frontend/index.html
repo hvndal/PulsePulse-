@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulsePulse — AI Voice & Long-Form Audio Workstation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="pulse-logo"></div>
+                <div>
+                    <h1>PulsePulse</h1>
+                    <span class="subtitle">AI Voice & Long-Form Audio Workstation by Mander.tech (Vancouver / Burnaby, BC)</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="btn-export" class="btn btn-primary">Export Master Track</button>
+                <button id="btn-pronunciation" class="btn btn-secondary">Pronunciation Dictionary</button>
+            </div>
+        </header>
+
+        <!-- Main Grid Layout -->
+        <div class="main-layout">
+            <!-- Sidebar: Projects & Voices -->
+            <aside class="sidebar">
+                <section class="panel">
+                    <h2>Project Workspace</h2>
+                    <select id="project-select" class="form-control"></select>
+                    <div id="project-meta" class="project-meta"></div>
+                </section>
+
+                <section class="panel">
+                    <h2>Voice Engine Select</h2>
+                    <select id="voice-select" class="form-control"></select>
+                    <div id="voice-details" class="voice-details"></div>
+                </section>
+
+                <section class="panel">
+                    <h2>Context Inspector</h2>
+                    <div id="context-inspector" class="context-inspector">
+                        <p class="text-muted">Select or generate a paragraph to inspect contextual directives.</p>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Script & Generation Queue Center -->
+            <main class="content-area">
+                <section class="panel script-editor-panel">
+                    <div class="panel-header">
+                        <h2>Script & Chapter Editor</h2>
+                        <button id="btn-generate-all" class="btn btn-success">Batch Synthesize Chapter</button>
+                    </div>
+                    <div id="script-container" class="script-container"></div>
+                </section>
+
+                <!-- Generation Queue Monitor -->
+                <section class="panel queue-panel">
+                    <h2>Generation Queue Monitor</h2>
+                    <div id="queue-status-list" class="queue-status-list"></div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Audio Player Footer Bar -->
+        <footer class="audio-footer">
+            <div class="audio-info">
+                <span id="now-playing-title">No Audio Loaded</span>
+                <span id="now-playing-qc" class="badge">QC Status: Ready</span>
+            </div>
+            <div class="audio-controls">
+                <audio id="main-audio-player" controls class="custom-audio"></audio>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Pronunciation Modal -->
+    <div id="pronunciation-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Pronunciation & IPA Dictionary</h3>
+            <div class="form-group">
+                <label>Word / Acronym:</label>
+                <input type="text" id="pr-word" class="form-control" placeholder="e.g. Mander">
+            </div>
+            <div class="form-group">
+                <label>Phonetic / IPA Replacement:</label>
+                <input type="text" id="pr-phonetic" class="form-control" placeholder="e.g. MAN-der">
+            </div>
+            <div class="modal-actions">
+                <button id="btn-save-rule" class="btn btn-primary">Add Rule</button>
+                <button id="btn-close-modal" class="btn btn-secondary">Close</button>
+            </div>
+            <ul id="pr-rules-list" class="pr-rules-list"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
